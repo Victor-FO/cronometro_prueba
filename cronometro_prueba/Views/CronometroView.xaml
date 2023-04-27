@@ -1,0 +1,64 @@
+﻿<Window x:Class="cronometro_prueba.Views.CronometroView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:cronometro_prueba.Views"
+        mc:Ignorable="d"
+        Title="CronometroView" ResizeMode="NoResize" Height="250" Width="700">
+
+        <Window.Resources>
+            <Style TargetType="Button">
+                <Setter Property="Width" Value="80"></Setter>
+                <Setter Property="Height" Value="20"></Setter>
+            </Style>
+        </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="TimerCount" 
+                   Grid.Row="0"
+                   Text="{Binding TimerCounter, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                   Grid.Column="1"                 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"
+                   FontSize="60">
+        </TextBlock>
+
+        <Button Name="Start"  Content="Start" Command="{Binding StartCmd}"  Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right">
+            <Button.ToolTip>
+                <ToolTip>
+                    <StackPanel>
+                        <TextBlock FontWeight="Bold">Starts/Restarts the stopwatch</TextBlock>
+                    </StackPanel>
+                </ToolTip>
+            </Button.ToolTip>
+        </Button>
+        <Button Name="Pause" Content="Pause" Command="{Binding PauseCmd}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center">
+            <Button.ToolTip>
+                <ToolTip>
+                    <StackPanel>
+                        <TextBlock FontWeight="Bold">Pauses the stopwatch</TextBlock>
+                    </StackPanel>
+                </ToolTip>
+            </Button.ToolTip>
+        </Button>
+        <Button Name="Stop" Content="Stop" Grid.Column="2" Command="{Binding StopCmd}" Grid.Row="1" HorizontalAlignment="Left">
+            <Button.ToolTip>
+                <ToolTip>
+                    <StackPanel>
+                        <TextBlock FontWeight="Bold">Stops and resets the stopwatch</TextBlock>
+                    </StackPanel>
+                </ToolTip>
+            </Button.ToolTip>
+        </Button>
+    </Grid>
+</Window>
